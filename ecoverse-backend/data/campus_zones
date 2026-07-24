@@ -1,0 +1,155 @@
+[
+  {
+    "id": 1,
+    "name": "Admission Cell - Front Building",
+    "category": "solar",
+    "latitude": 29.891863,
+    "longitude": 77.960103,
+    "area_sqm": 221.59,
+    "estimated_panels": null,
+    "estimated_energy_output_kwh": null
+  },
+  {
+    "id": 2,
+    "name": "Admission Cell - C-shape Building",
+    "category": "solar",
+    "latitude": 29.891598,
+    "longitude": 77.959996,
+    "area_sqm": 399.62,
+    "estimated_panels": null,
+    "estimated_energy_output_kwh": null
+  },
+  {
+    "id": 3,
+    "name": "Academic Block Rooftop",
+    "category": "solar",
+    "latitude": 29.894777,
+    "longitude": 77.961019,
+    "area_sqm": 795.83,
+    "estimated_panels": null,
+    "estimated_energy_output_kwh": null
+  },
+  {
+    "id": 4,
+    "name": "Law Block Rooftop",
+    "category": "solar",
+    "latitude": 29.891512,
+    "longitude": 77.960341,
+    "area_sqm": 751.34,
+    "estimated_panels": null,
+    "estimated_energy_output_kwh": null
+  },
+  {
+    "id": 5,
+    "name": "Computing Block Rooftop",
+    "category": "solar",
+    "latitude": 29.891168,
+    "longitude": 77.960883,
+    "area_sqm": 1128.62,
+    "estimated_panels": null,
+    "estimated_energy_output_kwh": null
+  },
+  {
+    "id": 6,
+    "name": "Parking Sheds (2 sheds)",
+    "category": "solar",
+    "latitude": 29.891044,
+    "longitude": 77.960908,
+    "area_sqm": 372.45,
+    "estimated_panels": null,
+    "estimated_energy_output_kwh": null
+  },
+  {
+    "id": 7,
+    "name": "Placement Cell Rooftop (2 parts)",
+    "category": "solar",
+    "latitude": 29.890701,
+    "longitude": 77.959384,
+    "area_sqm": 75.56,
+    "estimated_panels": null,
+    "estimated_energy_output_kwh": null
+  },
+  {
+    "id": 8,
+    "name": "Front Garden",
+    "category": "plantation",
+    "latitude": 29.892477,
+    "longitude": 77.961177,
+    "area_sqm": 5940.39,
+    "estimated_trees": null,
+    "estimated_co2_absorption_tons": null
+  },
+  {
+    "id": 9,
+    "name": "Cricket Ground",
+    "category": "plantation",
+    "latitude": 29.893225,
+    "longitude": 77.962109,
+    "area_sqm": 9969.09,
+    "estimated_trees": null,
+    "estimated_co2_absorption_tons": null
+  },
+  {
+    "id": 10,
+    "name": "Academic Ground - Part 1",
+    "category": "plantation",
+    "latitude": 29.892096,
+    "longitude": 77.960479,
+    "area_sqm": 716.85,
+    "estimated_trees": null,
+    "estimated_co2_absorption_tons": null
+  },
+  {
+    "id": 11,
+    "name": "Academic Ground - Part 2",
+    "category": "plantation",
+    "latitude": 29.892053,
+    "longitude": 77.960953,
+    "area_sqm": 1352.38,
+    "estimated_trees": null,
+    "estimated_co2_absorption_tons": null
+  },
+  {
+    "id": 12,
+    "name": "Academic Ground - Part 3",
+    "category": "plantation",
+    "latitude": 29.892040,
+    "longitude": 77.961382,
+    "area_sqm": 1279.25,
+    "estimated_trees": null,
+    "estimated_co2_absorption_tons": null
+  },
+  {
+    "id": 13,
+    "name": "Admission Cell Ground",
+    "category": "plantation",
+    "latitude": 29.891927,
+    "longitude": 77.959627,
+    "area_sqm": 4079.53,
+    "estimated_trees": null,
+    "estimated_co2_absorption_tons": null
+  },
+  {
+    "id": 14,
+    "name": "Back of Cafeteria + Front of Placement Cell",
+    "category": "plantation",
+    "latitude": 29.890999,
+    "longitude": 77.959233,
+    "area_sqm": 570.12,
+    "estimated_trees": null,
+    "estimated_co2_absorption_tons": null
+  },
+  {
+    "id": 15,
+    "name": "Canteen / Cafeteria",
+    "category": "waste",
+    "latitude": 29.891032,
+    "longitude": 77.959475,
+    "area_sqm": 2097.6,
+    "estimated_students_served": 4000,
+    "estimated_daily_waste_kg": null,
+    "estimated_annual_waste_kg": null,
+    "estimated_diverted_waste_kg": null,
+    "estimated_co2_avoided_tons": null
+  }
+]

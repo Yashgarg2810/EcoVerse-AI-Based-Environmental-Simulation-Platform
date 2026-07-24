@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Internal Green Audit - EcoVerse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Courier+Prime&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#79db8d",
+                        "impact-warning": "#D97706",
+                        "inverse-primary": "#79db8d",
+                        "on-secondary-container": "#004f7b",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#81233b",
+                        "tertiary": "#97344a",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary-fixed-variant": "#005323",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#15803d",
+                        "primary-fixed": "#95f8a7",
+                        "on-secondary-fixed-variant": "#004b74",
+                        "surface-bright": "#f7f9fb",
+                        "impact-positive": "#16A34A",
+                        "surface-container-highest": "#e0e3e5",
+                        "outline-variant": "#becabc",
+                        "secondary": "#006399",
+                        "on-tertiary-fixed": "#400013",
+                        "surface-tint": "#006d30",
+                        "secondary-fixed-dim": "#94ccff",
+                        "data-teal": "#0D9488",
+                        "background": "#f7f9fb",
+                        "tertiary-container": "#b64c62",
+                        "primary": "#00652c",
+                        "on-primary-fixed": "#00210a",
+                        "outline": "#6f7a6e",
+                        "surface-dim": "#d8dadc",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb2bd",
+                        "on-primary-container": "#d3ffd5",
+                        "secondary-container": "#7bc2ff",
+                        "surface": "#FFFFFF",
+                        "on-background": "#191c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#001d32",
+                        "technical-yellow": "#E4F222",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#3f493f",
+                        "inverse-surface": "#2d3133",
+                        "secondary-fixed": "#cde5ff",
+                        "on-surface": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "surface-container-high": "#e6e8ea",
+                        "impact-negative": "#DC2626",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary-fixed": "#ffd9dd",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "mono-accent": "#08090A",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-container": "#fff1f1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "max-width": "1280px",
+                        "gutter": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "section-h2": ["Inter"],
+                        "body-main": ["Inter"],
+                        "mono-data": ["Courier Prime"],
+                        "label-caps": ["Inter"],
+                        "card-h3": ["Inter"],
+                        "hero-h1": ["Inter"],
+                        "hero-h1-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "section-h2": ["36px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "body-main": ["15px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "mono-data": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "card-h3": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "hero-h1": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                        "hero-h1-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F8FAFC;
+            color: #191c1e;
+        }
+        .form-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            transition: transform 0.2s ease;
+        }
+        .input-field {
+            background-color: #F1F5F9;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #00652c;
+            background-color: #FFFFFF;
+            box-shadow: 0 0 0 4px rgba(0, 101, 44, 0.05);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .primary-btn {
+            background-color: #00652c;
+            color: white;
+            border-radius: 9999px;
+            padding: 12px 32px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .primary-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+        .secondary-btn {
+            background-color: transparent;
+            border: 1px solid #00652c;
+            color: #00652c;
+            border-radius: 9999px;
+            padding: 12px 32px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .secondary-btn:hover {
+            transform: translateY(-2px);
+            background-color: rgba(0, 101, 44, 0.05);
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="font-body-main text-body-main">
+<!-- Top Navigation Bar -->
+<header class="w-full top-0 sticky glass-header shadow-sm px-margin-desktop py-4 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="font-hero-h1 text-card-h3 font-bold text-primary">EcoVerse</span>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Audits</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Reports</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Analytics</a>
+</nav>
+<div class="flex items-center space-x-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">settings</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional user profile avatar shot in a clean, minimalist studio setting with soft lighting and a light gray background, conveying corporate responsibility and eco-consciousness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKpL7cwIzfMYBMRH7jzK5kYunq5faYlvXIOpxngfZtyhDzKvTBx1sbhDFVAnd-dUJup-a95pqDm4I_Sv2IALAJiyGURCQY0kPCuYCdoFgiiLHKuch00Y4unEqOG5lOrfUAmh5Gjtl-FuZ49q2sjfWNnPR6D6WV_QICzJmmiWuu-cwgOPukYeu26qlDrGSYWakczpXoO_0DTGrdA9xISq3-h_iJ1S-tCwyW4MI8SyP36wBtDrINQZgh"/>
+</div>
+</div>
+</header>
+<main class="max-w-max-width mx-auto px-margin-desktop py-12">
+<div class="mb-12">
+<h1 class="font-section-h2 text-section-h2 text-primary mb-2">Internal Green Audit</h1>
+<p class="text-on-surface-variant max-w-2xl">Complete the comprehensive environmental performance assessment for your institution. This data forms the foundation of your annual sustainability report.</p>
+</div>
+<form class="space-y-8" id="auditForm">
+<!-- 1. Institution Details -->
+<section class="form-card p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+<h2 class="text-card-h3 font-card-h3">1. Institution Details</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Institution Name</label>
+<input class="input-field" placeholder="e.g. Green Valley University" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Campus/Location</label>
+<input class="input-field" placeholder="e.g. Main Campus, North Wing" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Audit Year</label>
+<select class="input-field">
+<option>2023 - 2024</option>
+<option>2024 - 2025</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Prepared By</label>
+<input class="input-field" placeholder="Full Name" type="text"/>
+</div>
+<div class="md:col-span-2 space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Audit Committee Members</label>
+<textarea class="input-field h-24" placeholder="List names separated by commas"></textarea>
+</div>
+</div>
+</section>
+<!-- 2. Campus Information -->
+<section class="form-card p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">domain</span>
+<h2 class="text-card-h3 font-card-h3">2. Campus Information</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Total Area (Acres)</label>
+<input class="input-field" placeholder="0.00" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Built-up Area (sq. ft.)</label>
+<input class="input-field" placeholder="0.00" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Green Cover (%)</label>
+<input class="input-field" placeholder="0" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Student Population</label>
+<input class="input-field" placeholder="0" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Faculty Strength</label>
+<input class="input-field" placeholder="0" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Staff Count</label>
+<input class="input-field" placeholder="0" type="number"/>
+</div>
+</div>
+</section>
+<!-- 3. Energy -->
+<section class="form-card p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">bolt</span>
+<h2 class="text-card-h3 font-card-h3">3. Energy</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Annual Electricity (kWh)</label>
+<input class="input-field" placeholder="0.00" type="number"/>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl">
+<div>
+<p class="font-bold text-primary">Solar Power Plant</p>
+<p class="text-sm text-on-surface-variant">Installed on premises</p>
+</div>
+<input class="w-6 h-6 rounded text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Solar Capacity (kWp)</label>
+<input class="input-field" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div class="space-y-6">
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl">
+<div>
+<p class="font-bold text-primary">Diesel Generator</p>
+<p class="text-sm text-on-surface-variant">Used for backup power</p>
+</div>
+<input class="w-6 h-6 rounded text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Annual Diesel Usage (Ltrs)</label>
+<input class="input-field" placeholder="0.00" type="number"/>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Water -->
+<section class="form-card p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">water_drop</span>
+<h2 class="text-card-h3 font-card-h3">4. Water</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Daily Consumption (Ltrs)</label>
+<input class="input-field" placeholder="0.00" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Rainwater Harvesting Points</label>
+<input class="input-field" placeholder="0" type="number"/>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl">
+<div>
+<p class="font-bold text-primary">STP / ETP Facility</p>
+<p class="text-sm text-on-surface-variant">Wastewater treatment plant</p>
+</div>
+<input class="w-6 h-6 rounded text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Recycled Water (%)</label>
+<input class="input-field" placeholder="0" type="number"/>
+</div>
+</div>
+</section>
+<!-- 5. Waste -->
+<section class="form-card p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">delete_outline</span>
+<h2 class="text-card-h3 font-card-h3">5. Waste</h2>
+</div>
+<p class="font-label-caps text-label-caps text-outline uppercase mb-4">Monthly Generation (Kilograms)</p>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-medium">Organic</label>
+<input class="input-field" placeholder="0" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium">Plastic</label>
+<input class="input-field" placeholder="0" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium">Paper/Cardboard</label>
+<input class="input-field" placeholder="0" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium">E-Waste</label>
+<input class="input-field" placeholder="0" type="number"/>
+</div>
+</div>
+<div class="mt-6 space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Waste Diversion / Recycling %</label>
+<input class="input-field w-1/4" placeholder="0" type="number"/>
+</div>
+</section>
+<!-- 6. Green Infrastructure -->
+<section class="form-card p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">park</span>
+<h2 class="text-card-h3 font-card-h3">6. Green Infrastructure</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Existing Mature Trees</label>
+<input class="input-field" placeholder="Count" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">New Saplings Planted</label>
+<input class="input-field" placeholder="Count" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Green Cover / Landscaping Area</label>
+<input class="input-field" placeholder="e.g. 15,000 sq.ft." type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-outline uppercase">Annual Plantation Drives</label>
+<input class="input-field" placeholder="Events per year" type="number"/>
+</div>
+</div>
+</section>
+<!-- 7. Additional Initiatives -->
+<section class="form-card p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">verified</span>
+<h2 class="text-card-h3 font-card-h3">7. Additional Initiatives</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<label class="flex items-center gap-3 p-4 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors">
+<input class="w-5 h-5 rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-medium">Plastic Free Campus</span>
+</label>
+<label class="flex items-center gap-3 p-4 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors">
+<input class="w-5 h-5 rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-medium">100% LED Lighting</span>
+</label>
+<label class="flex items-center gap-3 p-4 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors">
+<input class="w-5 h-5 rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-medium">Solar Street Lights</span>
+</label>
+<label class="flex items-center gap-3 p-4 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors">
+<input class="w-5 h-5 rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-medium">EV Charging Stations</span>
+</label>
+<label class="flex items-center gap-3 p-4 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors">
+<input class="w-5 h-5 rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-medium">Organic Composting</span>
+</label>
+<label class="flex items-center gap-3 p-4 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors">
+<input class="w-5 h-5 rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-medium">Biodiversity Garden</span>
+</label>
+<label class="flex items-center gap-3 p-4 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors">
+<input class="w-5 h-5 rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-medium">Awareness Programs</span>
+</label>
+</div>
+</section>
+<!-- 8. Action Buttons -->
+<div class="flex flex-col md:flex-row justify-end items-center gap-4 pt-8">
+<button class="secondary-btn w-full md:w-auto" type="button">
+<span class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">save</span>
+                        Save Draft
+                    </span>
+</button>
+<button class="primary-btn w-full md:w-auto" type="submit">
+<span class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">description</span>
+                        Generate Internal Green Audit
+                    </span>
+</button>
+</div>
+</form>
+</main>
+<footer class="w-full mt-auto bg-surface-container-lowest border-t border-outline-variant px-margin-desktop py-12">
+<div class="max-w-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-center md:items-start">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="font-label-caps text-label-caps font-bold text-primary">EcoVerse</span>
+</div>
+<p class="text-on-surface-variant font-label-caps text-label-caps">© 2024 EcoVerse Sustainability Solutions. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-primary font-label-caps text-label-caps transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary font-label-caps text-label-caps transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary font-label-caps text-label-caps transition-colors" href="#">Impact Statement</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for form inputs
+        document.querySelectorAll('.input-field').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('label')?.classList.add('text-primary');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('label')?.classList.remove('text-primary');
+            });
+        });
+
+        // Form submission prevention for demo
+        document.getElementById('auditForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Audit data processing initiated. Generating report structure...');
+        });
+    </script>
+</body></html>

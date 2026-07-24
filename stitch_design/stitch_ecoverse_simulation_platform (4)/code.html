@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Courier+Prime&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .animate-float { animation: subtle-float 4s ease-in-out infinite; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#006399",
+                      "outline-variant": "#becabc",
+                      "on-tertiary-fixed": "#400013",
+                      "on-secondary-fixed": "#001d32",
+                      "on-tertiary": "#ffffff",
+                      "inverse-surface": "#2d3133",
+                      "surface-bright": "#f7f9fb",
+                      "on-primary": "#ffffff",
+                      "outline": "#6f7a6e",
+                      "surface-container-low": "#f2f4f6",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#81233b",
+                      "background": "#f7f9fb",
+                      "data-teal": "#0D9488",
+                      "on-error-container": "#93000a",
+                      "on-background": "#191c1e",
+                      "on-secondary": "#ffffff",
+                      "surface-tint": "#006d30",
+                      "primary": "#00652c",
+                      "on-secondary-fixed-variant": "#004b74",
+                      "error": "#ba1a1a",
+                      "mono-accent": "#08090A",
+                      "tertiary": "#97344a",
+                      "surface": "#FFFFFF",
+                      "surface-container-lowest": "#ffffff",
+                      "impact-negative": "#DC2626",
+                      "inverse-on-surface": "#eff1f3",
+                      "secondary-fixed": "#cde5ff",
+                      "primary-fixed": "#95f8a7",
+                      "on-surface": "#191c1e",
+                      "surface-container-highest": "#e0e3e5",
+                      "secondary-container": "#7bc2ff",
+                      "surface-variant": "#e0e3e5",
+                      "tertiary-fixed-dim": "#ffb2bd",
+                      "surface-container-high": "#e6e8ea",
+                      "on-surface-variant": "#3f493f",
+                      "primary-container": "#15803d",
+                      "on-primary-fixed-variant": "#005323",
+                      "secondary-fixed-dim": "#94ccff",
+                      "tertiary-container": "#b64c62",
+                      "inverse-primary": "#79db8d",
+                      "on-primary-container": "#d3ffd5",
+                      "on-primary-fixed": "#00210a",
+                      "tertiary-fixed": "#ffd9dd",
+                      "technical-yellow": "#E4F222",
+                      "surface-container": "#eceef0",
+                      "impact-warning": "#D97706",
+                      "on-tertiary-container": "#fff1f1",
+                      "primary-fixed-dim": "#79db8d",
+                      "surface-dim": "#d8dadc",
+                      "on-secondary-container": "#004f7b",
+                      "impact-positive": "#16A34A",
+                      "error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "max-width": "1280px",
+                      "margin-mobile": "20px",
+                      "unit": "4px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Inter"],
+                      "body-main": ["Inter"],
+                      "section-h2": ["Inter"],
+                      "card-h3": ["Inter"],
+                      "hero-h1": ["Inter"],
+                      "mono-data": ["Courier Prime"],
+                      "hero-h1-mobile": ["Inter"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "body-main": ["15px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "section-h2": ["36px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                      "card-h3": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "hero-h1": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                      "mono-data": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "hero-h1-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-main selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface/80 dark:bg-surface/80 backdrop-blur-md docked full-width top-0 sticky z-50 shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-max-width mx-auto h-16">
+<div class="flex items-center gap-8">
+<a class="text-card-h3 font-card-h3 font-bold text-primary dark:text-inverse-primary" href="#">EcoVerse</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="#">Simulate</a>
+<a class="text-primary dark:text-inverse-primary border-b-2 border-primary pb-1 font-medium translateY(-2px) transition-transform duration-300" href="#">Analytics</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="#">Map</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block px-6 py-2 bg-primary text-on-primary rounded-full font-label-caps text-label-caps hover:translate-y-[-2px] transition-transform duration-200">Get Started</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged environmental scientist with a warm smile. The lighting is soft and natural, coming from a large window. The background is a blurred modern office space with minimalist wooden furniture and green indoor plants, maintaining a bright and optimistic Bio-Technical aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2Vq0K3bOz06ixNsvra_bNxUcHqXxXtHUq46rwFoM_CSExqdF85yUf0jHLv-XEJvx1-13FuTVIcOr_FkjPmHUzrwuK0Vlfu2C4g9x4sujoAbbolfglDYi6cE9OVjk8FGmYCedUdjIZd4F3Jmt_qAEs1VD-DRy6c9DHkDeXp7cmEJs80zD9ElR9zcenhLA4d0auUKIyTE1wQQ3oUOb_fTgMzlVkzOqg153PEjE6sZ1InmkSxWATXNEZUbyL6eQtz-BQNca4u6jYLXw"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-max-width mx-auto px-margin-desktop py-12">
+<!-- Header Section -->
+<div class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h1 class="font-section-h2 text-section-h2 text-on-surface mb-2">Environmental Impact Analytics</h1>
+<p class="text-on-surface-variant max-w-2xl">Visualizing precision environmental stewardship through bio-technical data simulation. Monitor real-time carbon sequestration and sustainable optimization metrics.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface border border-outline-variant rounded-xl text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span class="font-label-caps text-label-caps">Last 30 Days</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface border border-outline-variant rounded-xl text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="font-label-caps text-label-caps">Export Data</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- 1. Carbon Reduction Comparison (Full Width) -->
+<div class="md:col-span-2 bg-surface rounded-xl p-8 shadow-[0_2px_12px_rgba(0,0,0,0.07)]">
+<div class="flex justify-between items-start mb-10">
+<div>
+<h3 class="font-card-h3 text-card-h3 text-on-surface mb-1">Carbon Reduction Comparison</h3>
+<p class="text-on-surface-variant text-[14px]">Simulated Performance vs. Baseline Trends (Metric Tons CO2e)</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-impact-positive"></span>
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase">Simulated</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-surface-container-highest"></span>
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase">Baseline</span>
+</div>
+</div>
+</div>
+<!-- Bar Chart Placeholder (Responsive CSS implementation) -->
+<div class="h-[320px] w-full flex items-end gap-2 md:gap-4 border-b border-outline-variant pb-2 relative">
+<!-- Y-Axis Labels -->
+<div class="absolute -left-12 inset-y-0 flex flex-col justify-between text-label-caps font-mono-data text-on-surface-variant/60 pointer-events-none">
+<span>100</span>
+<span>75</span>
+<span>50</span>
+<span>25</span>
+<span>0</span>
+</div>
+<!-- Bars -->
+<!-- Dynamic Bars created via CSS for demonstration -->
+<div class="flex-1 flex flex-col justify-end items-center gap-1 group">
+<div class="w-full flex justify-center items-end gap-1 px-1 h-full">
+<div class="w-full bg-surface-container-highest rounded-t-sm h-[65%] hover:opacity-80 transition-opacity"></div>
+<div class="w-full bg-impact-positive rounded-t-sm h-[85%] hover:opacity-80 transition-opacity"></div>
+</div>
+<span class="text-label-caps font-mono-data text-on-surface-variant mt-4">JAN</span>
+</div>
+<div class="flex-1 flex flex-col justify-end items-center gap-1 group">
+<div class="w-full flex justify-center items-end gap-1 px-1 h-full">
+<div class="w-full bg-surface-container-highest rounded-t-sm h-[70%]"></div>
+<div class="w-full bg-impact-positive rounded-t-sm h-[90%]"></div>
+</div>
+<span class="text-label-caps font-mono-data text-on-surface-variant mt-4">FEB</span>
+</div>
+<div class="flex-1 flex flex-col justify-end items-center gap-1 group">
+<div class="w-full flex justify-center items-end gap-1 px-1 h-full">
+<div class="w-full bg-surface-container-highest rounded-t-sm h-[68%]"></div>
+<div class="w-full bg-impact-positive rounded-t-sm h-[95%]"></div>
+</div>
+<span class="text-label-caps font-mono-data text-on-surface-variant mt-4">MAR</span>
+</div>
+<div class="flex-1 flex flex-col justify-end items-center gap-1 group">
+<div class="w-full flex justify-center items-end gap-1 px-1 h-full">
+<div class="w-full bg-surface-container-highest rounded-t-sm h-[75%]"></div>
+<div class="w-full bg-impact-positive rounded-t-sm h-[92%]"></div>
+</div>
+<span class="text-label-caps font-mono-data text-on-surface-variant mt-4">APR</span>
+</div>
+<div class="flex-1 flex flex-col justify-end items-center gap-1 group">
+<div class="w-full flex justify-center items-end gap-1 px-1 h-full">
+<div class="w-full bg-surface-container-highest rounded-t-sm h-[60%]"></div>
+<div class="w-full bg-impact-positive rounded-t-sm h-[88%]"></div>
+</div>
+<span class="text-label-caps font-mono-data text-on-surface-variant mt-4">MAY</span>
+</div>
+<div class="flex-1 flex flex-col justify-end items-center gap-1 group">
+<div class="w-full flex justify-center items-end gap-1 px-1 h-full">
+<div class="w-full bg-surface-container-highest rounded-t-sm h-[55%]"></div>
+<div class="w-full bg-impact-positive rounded-t-sm h-[80%]"></div>
+</div>
+<span class="text-label-caps font-mono-data text-on-surface-variant mt-4">JUN</span>
+</div>
+<div class="flex-1 flex flex-col justify-end items-center gap-1 group">
+<div class="w-full flex justify-center items-end gap-1 px-1 h-full">
+<div class="w-full bg-surface-container-highest rounded-t-sm h-[50%]"></div>
+<div class="w-full bg-impact-positive rounded-t-sm h-[85%]"></div>
+</div>
+<span class="text-label-caps font-mono-data text-on-surface-variant mt-4">JUL</span>
+</div>
+</div>
+</div>
+<!-- 2. Sustainability Contribution Breakdown (Half Width) -->
+<div class="bg-surface rounded-xl p-8 shadow-[0_2px_12px_rgba(0,0,0,0.07)]">
+<h3 class="font-card-h3 text-card-h3 text-on-surface mb-6">Sustainability Contribution</h3>
+<div class="flex flex-col lg:flex-row items-center gap-8">
+<!-- Donut Chart Container -->
+<div class="relative w-48 h-48 flex-shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<!-- Circular Tracks -->
+<circle class="text-impact-positive" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="62.8" stroke-width="12"></circle>
+<circle class="text-secondary" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="188.4" stroke-width="12"></circle>
+<circle class="text-impact-warning" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="213.5" stroke-width="12"></circle>
+<circle class="text-data-teal" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="238.6" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase mb-[-2px]">Total</span>
+<span class="font-card-h3 text-card-h3 text-on-surface">100%</span>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex flex-col gap-4 w-full">
+<div class="flex justify-between items-center group cursor-default">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-sm bg-impact-positive"></div>
+<span class="font-body-main text-on-surface">Trees Planted</span>
+</div>
+<span class="font-mono-data text-on-surface-variant">42%</span>
+</div>
+<div class="flex justify-between items-center group cursor-default">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-sm bg-secondary"></div>
+<span class="font-body-main text-on-surface">Solar Adoption</span>
+</div>
+<span class="font-mono-data text-on-surface-variant">28%</span>
+</div>
+<div class="flex justify-between items-center group cursor-default">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-sm bg-impact-warning"></div>
+<span class="font-body-main text-on-surface">Waste Reduction</span>
+</div>
+<span class="font-mono-data text-on-surface-variant">18%</span>
+</div>
+<div class="flex justify-between items-center group cursor-default">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-sm bg-data-teal"></div>
+<span class="font-body-main text-on-surface">Plastic Saved</span>
+</div>
+<span class="font-mono-data text-on-surface-variant">12%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. Projected Future Impact (Half Width) -->
+<div class="bg-surface rounded-xl p-8 shadow-[0_2px_12px_rgba(0,0,0,0.07)] overflow-hidden relative">
+<h3 class="font-card-h3 text-card-h3 text-on-surface mb-1">Projected Future Impact</h3>
+<p class="text-on-surface-variant text-[14px] mb-8">12-Month Sequestration Forecast (ktons)</p>
+<!-- Line Chart Visualization -->
+<div class="h-[180px] w-full relative">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 100">
+<!-- Grid Lines -->
+<line stroke="#eceef0" stroke-width="1" x1="0" x2="400" y1="0" y2="0"></line>
+<line stroke="#eceef0" stroke-width="1" x1="0" x2="400" y1="25" y2="25"></line>
+<line stroke="#eceef0" stroke-width="1" x1="0" x2="400" y1="50" y2="50"></line>
+<line stroke="#eceef0" stroke-width="1" x1="0" x2="400" y1="75" y2="75"></line>
+<!-- Gradient Fill -->
+<defs>
+<lineargradient id="gradient-impact" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#16a34a" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#16a34a" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 80 Q 50 70, 100 75 T 200 40 T 300 20 T 400 10 V 100 H 0 Z" fill="url(#gradient-impact)"></path>
+<!-- The Line -->
+<path d="M0 80 Q 50 70, 100 75 T 200 40 T 300 20 T 400 10" fill="none" stroke="#16a34a" stroke-linecap="round" stroke-width="3"></path>
+<!-- Active Points -->
+<circle class="animate-pulse" cx="400" cy="10" fill="#16a34a" r="5"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="flex justify-between w-full mt-4">
+<span class="text-label-caps font-mono-data text-on-surface-variant/60">Q1 2024</span>
+<span class="text-label-caps font-mono-data text-on-surface-variant/60">Q2 2024</span>
+<span class="text-label-caps font-mono-data text-on-surface-variant/60">Q3 2024</span>
+<span class="text-label-caps font-mono-data text-on-surface-variant/60">Q4 2024</span>
+</div>
+</div>
+<!-- Highlight Stat -->
+<div class="mt-8 flex items-center justify-between p-4 bg-surface-container-low rounded-lg border border-outline-variant/30">
+<div>
+<span class="text-label-caps font-label-caps text-on-surface-variant">Estimated Peak</span>
+<div class="text-card-h3 font-card-h3 text-primary">+24.8% <span class="text-[14px] font-normal text-on-surface-variant">Efficiency Gain</span></div>
+</div>
+<div class="bg-primary-container/20 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary text-[24px]">trending_up</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Grid Insights (Extra Detail for Professionalism) -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface p-6 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.07)] border border-white hover:translate-y-[-4px] transition-transform duration-300">
+<div class="flex items-center gap-3 mb-4 text-secondary">
+<span class="material-symbols-outlined">eco</span>
+<h4 class="font-label-caps text-label-caps uppercase">Bio-Metric Health</h4>
+</div>
+<div class="text-[28px] font-bold text-on-surface mb-1">94.2%</div>
+<p class="text-on-surface-variant text-[14px]">Ecosystem vitality score based on diverse simulated variables.</p>
+</div>
+<div class="bg-surface p-6 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.07)] border border-white hover:translate-y-[-4px] transition-transform duration-300">
+<div class="flex items-center gap-3 mb-4 text-data-teal">
+<span class="material-symbols-outlined">analytics</span>
+<h4 class="font-label-caps text-label-caps uppercase">Precision Delta</h4>
+</div>
+<div class="text-[28px] font-bold text-on-surface mb-1">±0.4%</div>
+<p class="text-on-surface-variant text-[14px]">Simulation variance rate within 95% confidence interval.</p>
+</div>
+<div class="bg-surface p-6 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.07)] border border-white hover:translate-y-[-4px] transition-transform duration-300">
+<div class="flex items-center gap-3 mb-4 text-impact-warning">
+<span class="material-symbols-outlined">bolt</span>
+<h4 class="font-label-caps text-label-caps uppercase">Resource Offset</h4>
+</div>
+<div class="text-[28px] font-bold text-on-surface mb-1">12.8M</div>
+<p class="text-on-surface-variant text-[14px]">Megajoules of energy saved through optimized logistics.</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-primary-container full-width py-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-max-width mx-auto">
+<div class="mb-8 md:mb-0">
+<h2 class="text-card-h3 font-card-h3 text-on-primary dark:text-on-primary-container mb-2">EcoVerse</h2>
+<p class="font-body-main text-body-main text-on-primary/80 dark:text-on-primary-container/80 max-w-xs">© 2024 EcoVerse. Precision Environmental Stewardship.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label-caps text-label-caps text-on-primary/80 dark:text-on-primary-container/80 hover:text-on-primary dark:hover:text-on-primary-container transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-primary/80 dark:text-on-primary-container/80 hover:text-on-primary dark:hover:text-on-primary-container transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-primary/80 dark:text-on-primary-container/80 hover:text-on-primary dark:hover:text-on-primary-container transition-opacity duration-200" href="#">Sustainability Report</a>
+<a class="font-label-caps text-label-caps text-on-primary/80 dark:text-on-primary-container/80 hover:text-on-primary dark:hover:text-on-primary-container transition-opacity duration-200" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for chart elements
+        document.querySelectorAll('.group').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const bars = item.querySelectorAll('div');
+                bars.forEach(b => b.classList.add('brightness-110'));
+            });
+            item.addEventListener('mouseleave', () => {
+                const bars = item.querySelectorAll('div');
+                bars.forEach(b => b.classList.remove('brightness-110'));
+            });
+        });
+
+        // Simple visibility observer for an entrance animation effect
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.bg-surface').forEach(card => {
+            card.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-8');
+            observer.observe(card);
+        });
+    </script>
+</body></html>

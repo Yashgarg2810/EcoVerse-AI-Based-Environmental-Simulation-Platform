@@ -1,0 +1,135 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// NOTE (Prisma 7): The datasource url is configured in prisma.config.ts
+// The 'url' property is no longer set here.
+datasource db {
+  provider = "postgresql"
+}
+
+model Campus {
+  id           String        @id @default(cuid())
+  name         String
+  address      String
+  latitude     Float
+  longitude    Float
+  totalArea    Float         // in acres
+  numBuildings Int
+  numStudents  Int?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  users        User[]
+  assets       CampusAsset[]
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("researcher")
+  campusId  String?
+  campus    Campus?  @relation(fields: [campusId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  reports     AuditReport[]
+  draft       AuditDraft?
+  simulations SimulationHistory[]
+}
+
+model CampusAsset {
+  id        String   @id @default(cuid())
+  campusId  String
+  campus    Campus   @relation(fields: [campusId], references: [id], onDelete: Cascade)
+  name      String
+  category  String   // "plantation" | "solar" | "waste" | "water"
+  latitude  Float
+  longitude Float
+  details   Json     // JSONB to store dynamic details based on asset category
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([campusId])
+}
+
+model AuditReport {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  institution  String
+  campus       String
+  academicYear String
+  formData     Json     // JSONB — the full audit form submission
+  reportData   String   // TEXT — stringified AI-generated report JSON
+  overallScore Int
+  createdAt    DateTime @default(now())
+
+  @@index([userId])
+}
+
+model AuditDraft {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  formData  Json     // JSONB — in-progress audit form data
+  updatedAt DateTime @updatedAt
+}
+
+model TreeSpecies {
+  id                    String   @id @default(cuid())
+  name                  String   @unique
+  co2Absorption         Float    // kg/year per tree
+  avgLifespan           Int      // years
+  saplingCost           Float    // cost per sapling in INR
+  annualMaintenanceCost Float    // maintenance cost per tree per year in INR
+  spacingRequirement    Float    // spacing requirement in meters
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
+
+model SolarPanelType {
+  id                String   @id @default(cuid())
+  name              String   @unique
+  efficiency        Float    // percentage as float (e.g. 0.20)
+  wattage           Int      // wattage in Watts
+  areaRequired      Float    // area required per panel in sqm
+  averageMarketCost Float    // cost per panel in INR
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model SimulationHistory {
+  id                  String   @id @default(cuid())
+  userId              String
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  treeSpecies         String
+  plantationArea      Float
+  solarPanelType      String
+  rooftopArea         Float
+  wastePercent        Float
+  co2Reduced          Float
+  energySaved         Float
+  treesPlanted        Int
+  wasteDiverted       Float
+  sustainabilityScore Int
+  createdAt           DateTime @default(now())
+
+  @@index([userId])
+}
+
+model ContactMessage {
+  id           String   @id @default(cuid())
+  name         String
+  organization String
+  email        String
+  phone        String?
+  subject      String
+  message      String
+  createdAt    DateTime @default(now())
+}
