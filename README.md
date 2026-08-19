@@ -43,4 +43,4 @@ each campus zone.
 | Auth | JWT-based authentication |
 | Export | Native print-to-PDF styling |
 
-## 📁 Project Structure
+<img width="1906" height="918" alt="image" src="https://github.com/user-attachments/assets/87f8783c-d398-40b0-a856-67b8f2413a4f" />
