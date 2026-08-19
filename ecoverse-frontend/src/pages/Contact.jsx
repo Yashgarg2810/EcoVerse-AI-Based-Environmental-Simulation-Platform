@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 export default function Contact() {
   const formRef = useRef(null);
   const [formData, setFormData] = useState({
@@ -93,7 +95,7 @@ export default function Contact() {
 
     setIsSubmitting(true);
     try {
-      const res = await fetch('http://localhost:5000/api/contact', {
+      const res = await fetch(`${API_BASE}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

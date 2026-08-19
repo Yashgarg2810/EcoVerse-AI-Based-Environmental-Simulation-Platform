@@ -408,10 +408,14 @@ app.delete('/api/simulate/history/:id', verifyToken, async (req, res) => {
   }
 });
 
-// ─── Start Server ──────────────────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`EcoVerse backend running at http://localhost:${PORT}`);
-});
+// ─── Start Server (skip in Vercel serverless) ─────────────────────────────────
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`EcoVerse backend running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
 
 
 

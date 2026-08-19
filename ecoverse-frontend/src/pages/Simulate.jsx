@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 function Simulate() {
   // Authentication Context
   const { token, isAuthenticated } = useAuth();
@@ -33,7 +35,7 @@ function Simulate() {
 
   // Fetch simulation options on mount
   useEffect(() => {
-    fetch('http://localhost:5000/api/simulation-data')
+    fetch(`${API_BASE}/api/simulation-data`)
       .then((res) => res.json())
       .then((data) => {
         setSpeciesList(data.treeSpecies || []);
@@ -47,7 +49,7 @@ function Simulate() {
   // Fetch history function
   const fetchHistory = () => {
     if (!isAuthenticated || !token) return;
-    fetch('http://localhost:5000/api/simulate/history', {
+    fetch(`${API_BASE}/api/simulate/history`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((res) => res.json())
@@ -67,7 +69,7 @@ function Simulate() {
   // Debounced simulation API call
   useEffect(() => {
     const timer = setTimeout(() => {
-      fetch(`http://localhost:5000/api/simulate?plantationArea=${plantationArea}&rooftopArea=${rooftopArea}&wastePercent=${waste}&treeSpecies=${selectedSpecies}&solarPanelType=${selectedPanel}`)
+      fetch(`${API_BASE}/api/simulate?plantationArea=${plantationArea}&rooftopArea=${rooftopArea}&wastePercent=${waste}&treeSpecies=${selectedSpecies}&solarPanelType=${selectedPanel}`)
         .then((res) => res.json())
         .then((data) => setSimResults(data))
         .catch((err) => console.error('Simulate fetch error:', err));
@@ -175,7 +177,7 @@ function Simulate() {
       sustainabilityScore: Number(score) || 0
     };
 
-    fetch('http://localhost:5000/api/simulate/save', {
+    fetch(`${API_BASE}/api/simulate/save`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -227,7 +229,7 @@ function Simulate() {
     e.stopPropagation();
     if (!isAuthenticated || !token) return;
 
-    fetch(`http://localhost:5000/api/simulate/history/${id}`, {
+    fetch(`${API_BASE}/api/simulate/history/${id}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` }
     })

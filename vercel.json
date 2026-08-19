@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "installCommand": "npm install && cd ecoverse-frontend && npm install",
+  "buildCommand": "npx prisma generate && cd ecoverse-frontend && npm run build",
+  "outputDirectory": "ecoverse-frontend/dist",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
+}

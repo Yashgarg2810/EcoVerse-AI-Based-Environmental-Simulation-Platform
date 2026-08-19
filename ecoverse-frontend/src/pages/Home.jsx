@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 function Home() {
   const navigate = useNavigate();
   const [trees, setTrees] = useState(0);
@@ -51,7 +53,7 @@ function Home() {
   useEffect(() => {
     let active = true;
 
-    fetch('http://localhost:5000/api/recommendations')
+    fetch(`${API_BASE}/api/recommendations`)
       .then(res => res.json())
       .then(data => {
         if (!active) return;
