@@ -239,8 +239,15 @@ export default function GreenAuditForm() {
         throw new Error(data.error || 'Report generation failed.');
       }
 
-      // Navigate to the DB-persisted report page
-      navigate(`/reports/${data.reportId}`);
+      // Backup report to localStorage
+      try {
+        localStorage.setItem(`ecoverse_report_${data.reportId}`, JSON.stringify({ report: data.report, formData: form }));
+      } catch (_) {}
+
+      // Navigate to the report page with state
+      navigate(`/reports/${data.reportId}`, {
+        state: { report: data.report, formData: form }
+      });
     } catch (err) {
       setError(err.message || 'Something went wrong. Please check if the backend is running.');
       setLoading(false);

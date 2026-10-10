@@ -136,9 +136,9 @@ export default function GreenAuditReport() {
   const stateReport   = location.state?.report;
   const stateFormData = location.state?.formData;
 
-  // Fetch from DB when accessed via /reports/:id
+  // Fetch from DB when accessed via /reports/:id (skip if state already provides report)
   useEffect(() => {
-    if (!id) return; // no id param → use state
+    if (!id || stateReport) return;
     setFetchLoading(true);
     authFetch(`/api/audit/reports/${id}`)
       .then(r => r.json())
@@ -147,9 +147,20 @@ export default function GreenAuditReport() {
         setFetchedReport(data.report.reportData);
         setFetchedFormData(data.report.formData);
       })
-      .catch(err => setFetchError(err.message))
+      .catch(err => {
+        // Try localStorage backup
+        try {
+          const cached = JSON.parse(localStorage.getItem(`ecoverse_report_${id}`));
+          if (cached?.report) {
+            setFetchedReport(cached.report);
+            setFetchedFormData(cached.formData);
+            return;
+          }
+        } catch (_) {}
+        setFetchError(err.message);
+      })
       .finally(() => setFetchLoading(false));
-  }, [id, authFetch]);
+  }, [id, authFetch, stateReport]);
 
   // Resolve which data to use
   const report   = fetchedReport   ?? stateReport;
